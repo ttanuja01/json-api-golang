@@ -1,1 +1,8 @@
 json-api-golang
+
+1. Initially created main.go and startted server and created base handlers.
+2. used mux tfor http routing and dispatching
+3. now i ewant to store the account details somewherefor which i want postgres db
+4. install docker and run docker desktop and then start a postgres instance in docker
+docs:https://hub.docker.com/_/postgres/
+pswrd= gobank

@@ -1,14 +1,24 @@
 package main
 
-import "fmt"
+import "log"
 
-func NewAPIServer(listenAddr string) *APIServer {
+func NewAPIServer(listenAddr string, store Storage) *APIServer {
 	return &APIServer{
 		listenAddr: listenAddr,
+		store:      store,
 	}
 }
+
 func main() {
-	server := NewAPIServer(":3000") // runs on 3000
-	server.Run()                    // call run
-	fmt.Println("Hi Buddy!!, Server is running")
+	store, err := NewPostgresStore()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	if err := store.Init(); err != nil {
+		log.Fatal(err)
+	}
+
+	server := NewAPIServer(":3000", store)
+	server.Run()
 }
