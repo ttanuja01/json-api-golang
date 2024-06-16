@@ -1,6 +1,9 @@
 package main
 
-import "log"
+import (
+	"fmt"
+	"log"
+)
 
 func NewAPIServer(listenAddr string, store Storage) *APIServer {
 	return &APIServer{
@@ -21,4 +24,5 @@ func main() {
 
 	server := NewAPIServer(":3000", store)
 	server.Run()
+	fmt.Println("Hi Buddy!!, server is running")
 }
